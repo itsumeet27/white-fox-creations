@@ -310,21 +310,21 @@ def make_icons():
     with open(f"{ICONS}/play.svg", "w") as f:
         f.write(
             '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">'
-            '<circle cx="12" cy="12" r="11" stroke="#b8ff00" stroke-width="1"/>'
-            '<path d="M10 8l6 4-6 4V8z" fill="#b8ff00"/>'
+            '<circle cx="12" cy="12" r="11" stroke="#FF6600" stroke-width="1"/>'
+            '<path d="M10 8l6 4-6 4V8z" fill="#FF6600"/>'
             "</svg>\n"
         )
     with open(f"{ICONS}/star.svg", "w") as f:
         f.write(
             '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">'
-            '<path d="M32 4 L36 28 L60 32 L36 36 L32 60 L28 36 L4 32 L28 28 Z" fill="#b8ff00"/>'
+            '<path d="M32 4 L36 28 L60 32 L36 36 L32 60 L28 36 L4 32 L28 28 Z" fill="#FF6600"/>'
             "</svg>\n"
         )
     with open(f"{ICONS}/location.svg", "w") as f:
         f.write(
             '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">'
-            '<path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7z" stroke="#b8ff00" stroke-width="1.5"/>'
-            '<circle cx="12" cy="9" r="2.5" fill="#b8ff00"/>'
+            '<path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7z" stroke="#FF6600" stroke-width="1.5"/>'
+            '<circle cx="12" cy="9" r="2.5" fill="#FF6600"/>'
             "</svg>\n"
         )
     open("/workspace/assets/videos/.gitkeep", "w").close()

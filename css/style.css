@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Aniket Vyas — Motion Graphics Portfolio
+   Nirbhay Verma — Motion Graphics Portfolio
    Design tokens, base, layout, components, motion
    ========================================================================== */
 
@@ -11,7 +11,7 @@
   --text: #f4f4f0;
   --muted: #8c8c8c;
   --border: rgba(255, 255, 255, 0.12);
-  --accent: #b8ff00;
+  --accent: #FF6600;
   --accent-dark: #6f9900;
 
   --font: "Space Grotesk", system-ui, sans-serif;

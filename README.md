@@ -1,4 +1,4 @@
-# Aniket Vyas — Motion Graphics Portfolio
+# Nirbhay Verma — Motion Graphics Portfolio
 
 Premium single-page portfolio for a Graphic Visualizer / Motion Graphics Artist.
 
