@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gallery — Nirbhay Verma. Visual explorations beyond brief.">
+  <meta name="theme-color" content="#070707">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <title>Gallery — Nirbhay Verma</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/gallery.css">
+  <link rel="stylesheet" href="css/gallery-responsive.css">
+</head>
+<body>
+  <div class="page-loader" aria-hidden="true">
+    <div class="page-loader__inner">
+      <div class="page-loader__logo">NV</div>
+      <div class="page-loader__line"></div>
+    </div>
+  </div>
+
+  <div class="cursor" aria-hidden="true">
+    <span class="cursor__dot"></span>
+    <span class="cursor__ring"></span>
+    <span class="cursor__label">VIEW</span>
+  </div>
+
+  <header class="site-header" id="top">
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html" class="nav__logo" aria-label="Nirbhay Verma home">NV</a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="gallery.html" class="is-active" aria-current="page">Gallery</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <div class="nav__actions">
+        <button class="nav__dot-btn" type="button" aria-label="Interaction" data-cursor="button"><span></span></button>
+        <button class="nav__menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+          <span>Menu</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="gallery-hero" aria-label="Gallery introduction">
+      <div class="gallery-hero__side" aria-hidden="true">
+        <span>Every frame tells a story</span>
+        <span class="gallery-hero__side-line"></span>
+      </div>
+
+      <div class="gallery-hero__grid">
+        <div class="gallery-hero__content">
+          <p class="gallery-hero__label reveal-load" data-delay="1">
+            <span class="dot" aria-hidden="true"></span> Gallery
+          </p>
+          <h1 class="gallery-hero__title reveal-load" data-delay="2">
+            Visual<br>
+            <span class="accent">Explorations</span><br>
+            Beyond Brief<span class="accent">.</span>
+          </h1>
+          <p class="gallery-hero__desc reveal-load" data-delay="3">
+            A collection of personal projects, visual experiments
+            and artworks created to explore ideas, techniques
+            and imagination.
+          </p>
+          <div class="gallery-hero__reel reveal-load" data-delay="4">
+            <button class="reel-btn" type="button" data-open-reel data-cursor="button" aria-haspopup="dialog">
+              <span class="reel-btn__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+                  <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1"/>
+                  <path d="M10 8l6 4-6 4V8z" fill="currentColor"/>
+                </svg>
+              </span>
+              <span>Play Gallery Reel</span>
+            </button>
+            <span class="reel-btn__time">01:45 Min</span>
+          </div>
+        </div>
+
+        <div class="gallery-hero__visual reveal-load" data-delay="4">
+          <div class="hero-artwork">
+            <div class="hero-artwork__glow" aria-hidden="true"></div>
+            <div class="hero-artwork__media">
+              <img
+                src="assets/images/gallery/hero-gallery.jpg"
+                alt="Dark sculptural form with a glowing orange ring"
+                width="1200"
+                height="1200"
+                decoding="async"
+              >
+            </div>
+            <div class="hero-artwork__particles" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-hero__counter" aria-hidden="true">
+        <span>01</span> <span class="accent">/ <span data-gallery-total>24</span></span>
+      </div>
+    </section>
+
+    <div class="gallery-toolbar">
+      <div class="gallery-toolbar__inner">
+        <div class="gallery-filters" role="tablist" aria-label="Artwork categories">
+          <button type="button" data-filter="all" class="is-active" role="tab" aria-selected="true">All</button>
+          <button type="button" data-filter="digital-art" role="tab" aria-selected="false">Digital Art</button>
+          <button type="button" data-filter="poster" role="tab" aria-selected="false">Posters</button>
+          <button type="button" data-filter="typography" role="tab" aria-selected="false">Typography</button>
+          <button type="button" data-filter="3d" role="tab" aria-selected="false">3D</button>
+          <button type="button" data-filter="motion" role="tab" aria-selected="false">Motion Studies</button>
+          <button type="button" data-filter="experimental" role="tab" aria-selected="false">Experimental</button>
+        </div>
+        <label class="gallery-sort">
+          <span>Sort by</span>
+          <select id="gallery-sort" aria-label="Sort artworks">
+            <option value="latest">Latest</option>
+            <option value="oldest">Oldest</option>
+            <option value="az">A–Z</option>
+            <option value="za">Z–A</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <section class="gallery-section" aria-label="Artwork collection">
+      <div class="artwork-grid" id="artwork-grid"></div>
+    </section>
+
+    <section class="gallery-cta" aria-labelledby="gallery-cta-heading">
+      <div class="gallery-cta__star" aria-hidden="true">
+        <svg viewBox="0 0 64 64" width="48" height="48" fill="currentColor">
+          <path d="M32 4 L36 28 L60 32 L36 36 L32 60 L28 36 L4 32 L28 28 Z"/>
+        </svg>
+      </div>
+      <div class="gallery-cta__copy">
+        <p class="gallery-cta__eyebrow">Have an idea in mind?</p>
+        <h2 id="gallery-cta-heading" class="gallery-cta__title">
+          Let's create something<br>
+          <span class="accent">Extraordinary</span> together.
+        </h2>
+      </div>
+      <a class="btn-cta" href="mailto:hello@nirbhayverma.com" data-cursor="button">
+        Start a Project <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <strong>NV</strong>
+        <span>© 2026 Nirbhay Verma. All Rights Reserved.</span>
+      </div>
+      <ul class="site-footer__social">
+        <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+      </ul>
+      <a href="#top" class="site-footer__top" data-cursor="button">Back to Top <span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
+
+  <div class="modal" id="reel-modal" role="dialog" aria-modal="true" aria-labelledby="reel-title" hidden>
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__panel">
+      <button class="modal__close" type="button" data-close-modal aria-label="Close gallery reel">×</button>
+      <h2 id="reel-title" class="modal__title">Gallery Reel</h2>
+      <div class="modal__video">
+        <video id="gallery-reel-video" controls playsinline preload="none" poster="assets/images/gallery/hero-gallery.jpg">
+          <source src="assets/videos/showreel.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <div class="lightbox" id="artwork-lightbox" role="dialog" aria-modal="true" aria-label="Artwork viewer" hidden>
+    <div class="lightbox__backdrop" data-lightbox-close></div>
+    <button class="lightbox__close" type="button" data-lightbox-close aria-label="Close artwork">×</button>
+    <button class="lightbox__nav lightbox__nav--prev" type="button" data-lightbox-prev aria-label="Previous artwork">←</button>
+    <div class="lightbox__figure">
+      <img class="lightbox__image" src="" alt="">
+      <div class="lightbox__info">
+        <p class="lightbox__counter"></p>
+        <h2 class="lightbox__title"></h2>
+        <p class="lightbox__category"></p>
+        <p class="lightbox__year"></p>
+        <p class="lightbox__desc"></p>
+        <p class="lightbox__tools"></p>
+      </div>
+    </div>
+    <button class="lightbox__nav lightbox__nav--next" type="button" data-lightbox-next aria-label="Next artwork">→</button>
+  </div>
+
+  <script src="js/gallery-data.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/lightbox.js"></script>
+  <script src="js/gallery-animations.js"></script>
+  <script src="js/gallery-cursor.js"></script>
+  <script src="js/gallery-app.js"></script>
+</body>
+</html>

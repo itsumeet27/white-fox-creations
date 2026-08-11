@@ -31,3 +31,9 @@ Open `http://localhost:8080`.
 ## Accent
 
 Primary accent: `#FF6600`
+
+## Gallery page
+
+Open `gallery.html` for the full exhibition gallery (filters, sort, lightbox, reel modal).
+
+Linked from the homepage via **Explore Gallery** and the **Gallery** nav item.
