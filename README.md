@@ -1,35 +1,33 @@
 # Nirbhay Verma — Motion Graphics Portfolio
 
-Premium single-page portfolio for a Graphic Visualizer / Motion Graphics Artist.
+Premium single-page portfolio (White Fox Creations).
+
+## Live site
+
+Target URL: **https://white-fox-creations.github.io**
+
+Pushes to `main` run `.github/workflows/deploy-pages.yml` and republish the site.
+
+### Enable GitHub Pages (one-time)
+
+1. Open repo **Settings → Pages**
+2. Set **Source** to **GitHub Actions**
+3. Merge this branch to `main` (or push to `main`) so the deploy workflow runs
+
+**About the URL:** `https://white-fox-creations.github.io` requires a GitHub user or organization named `white-fox-creations` with a repository named `white-fox-creations.github.io`.
+
+Until that exists, Pages for this repo publishes at:
+
+`https://itsumeet27.github.io/white-fox-creations/`
 
 ## Run locally
 
-Open `index.html` directly in a browser — no build step required.
-
 ```bash
-# optional local server
 python3 -m http.server 8080
 ```
 
-## Structure
+Open `http://localhost:8080`.
 
-```text
-index.html
-css/style.css
-css/responsive.css
-js/main.js
-js/animations.js
-js/gallery.js
-js/cursor.js
-assets/images/
-assets/videos/
-assets/icons/
-```
+## Accent
 
-## Replace assets
-
-- Hero: `assets/images/hero-cinematic.jpg`
-- Projects: `assets/images/project-*.jpg`
-- Gallery: `assets/images/gallery-0*.jpg`
-- Portrait / signature: `assets/images/portrait.jpg`, `signature.png`
-- Showreel: `assets/videos/showreel.mp4`
+Primary accent: `#FF6600`

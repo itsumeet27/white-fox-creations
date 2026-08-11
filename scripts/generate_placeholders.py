@@ -13,7 +13,7 @@ os.makedirs(ICONS, exist_ok=True)
 os.makedirs("/workspace/assets/videos", exist_ok=True)
 random.seed(42)
 
-ACCENT = (184, 255, 0)
+ACCENT = (255, 102, 0)
 BG = (8, 8, 8)
 
 
@@ -84,7 +84,7 @@ def make_hero():
     draw = ImageDraw.Draw(img, "RGBA")
     draw.ellipse([cx - 100, cy - 100, cx + 100, cy + 100], outline=(*ACCENT, 220), width=5)
     draw.ellipse([cx - 78, cy - 78, cx + 78, cy + 78], outline=(*ACCENT, 140), width=2)
-    draw.ellipse([cx - 55, cy - 55, cx + 55, cy + 55], fill=(184, 255, 0, 55))
+    draw.ellipse([cx - 55, cy - 55, cx + 55, cy + 55], fill=(255, 102, 0, 55))
     draw.ellipse([cx - 28, cy - 28, cx + 28, cy + 28], fill=(220, 255, 140, 100))
 
     mist = Image.new("RGBA", (w, h), (0, 0, 0, 0))
@@ -124,7 +124,7 @@ def make_echoes():
     draw = ImageDraw.Draw(img, "RGBA")
     for i in range(6):
         x0 = int(w * 0.28) + i * 35
-        draw.polygon([(x0, int(h * 0.22)), (x0 + 18, int(h * 0.22)), (x0 + 70, h), (x0 + 18, h)], fill=(184, 255, 0, 14))
+        draw.polygon([(x0, int(h * 0.22)), (x0 + 18, int(h * 0.22)), (x0 + 70, h), (x0 + 18, h)], fill=(255, 102, 0, 14))
     img = film_grain(img.convert("RGB"), 18)
     img.save(f"{OUT}/project-echoes.jpg", quality=85, optimize=True)
     print("echoes")
@@ -135,7 +135,7 @@ def make_fluidity():
     img = Image.new("RGB", (w, h), (8, 6, 18))
     overlay = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     d = ImageDraw.Draw(overlay)
-    colors = [(80, 40, 160, 55), (40, 80, 200, 50), (120, 60, 220, 45), (20, 30, 80, 65), (184, 255, 0, 28)]
+    colors = [(80, 40, 160, 55), (40, 80, 200, 50), (120, 60, 220, 45), (20, 30, 80, 65), (255, 102, 0, 28)]
     for i in range(35):
         cx, cy = random.randint(0, w), random.randint(0, h)
         rx, ry = random.randint(70, 260), random.randint(50, 200)
@@ -147,7 +147,7 @@ def make_fluidity():
     for wave in range(5):
         pts = [(x, int(h * 0.28 + wave * 90 + math.sin(x / 55 + wave) * 48)) for x in range(0, w, 6)]
         rd.line(pts, fill=(180, 140, 255, 100), width=3)
-        rd.line([(p[0], p[1] + 10) for p in pts], fill=(184, 255, 0, 40), width=1)
+        rd.line([(p[0], p[1] + 10) for p in pts], fill=(255, 102, 0, 40), width=1)
     img = Image.alpha_composite(img, ribbon.filter(ImageFilter.GaussianBlur(1.5)))
     img = film_grain(img.convert("RGB"), 16)
     img.save(f"{OUT}/project-fluidity.jpg", quality=85, optimize=True)
@@ -203,29 +203,70 @@ def make_portrait():
 
 
 def make_signature():
-    w, h = 560, 180
+    """Handwritten-style signature: Nirbhay Verma."""
+    w, h = 720, 200
     img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
-    strokes = [
-        [(30, 130), (60, 35), (90, 130)],
-        [(48, 95), (75, 95)],
-        [(110, 130), (110, 65), (140, 65), (150, 85), (150, 130)],
-        [(172, 130), (172, 75)],
-        [(172, 50), (172, 45)],
-        [(195, 35), (195, 130)],
-        [(195, 95), (235, 65)],
-        [(195, 95), (240, 130)],
-        [(265, 105), (295, 85), (325, 105), (295, 125), (265, 105)],
-        [(345, 45), (345, 130), (375, 130)],
-        [(330, 70), (365, 70)],
-        [(390, 115), (450, 85), (510, 125), (540, 75)],
-    ]
-    for stroke in strokes:
-        if len(stroke) == 2 and abs(stroke[0][0] - stroke[1][0]) < 2 and abs(stroke[0][1] - stroke[1][1]) < 8:
-            x, y = stroke[0]
-            draw.ellipse([x - 3, y - 3, x + 3, y + 3], fill=(*ACCENT, 255))
-        else:
-            draw.line(stroke, fill=(*ACCENT, 255), width=3, joint="curve")
+
+    # Prefer a script-like font when available
+    font = None
+    for path in (
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Oblique.ttf",
+        "/usr/share/fonts/truetype/liberation/LiberationSerif-Italic.ttf",
+        "/usr/share/fonts/truetype/freefont/FreeSerifItalic.ttf",
+    ):
+        if os.path.exists(path):
+            try:
+                font = ImageFont.truetype(path, 64)
+                break
+            except OSError:
+                continue
+
+    if font is not None:
+        # Soft under-glow then crisp stroke text
+        for ox, oy, a in ((2, 2, 80), (0, 0, 255)):
+            draw.text((28 + ox, 70 + oy), "Nirbhay Verma", font=font, fill=(*ACCENT, a))
+        # Flourish underline
+        draw.line([(40, 155), (200, 168), (420, 150), (620, 162)], fill=(*ACCENT, 220), width=2, joint="curve")
+        draw.line([(620, 162), (680, 130)], fill=(*ACCENT, 200), width=2)
+    else:
+        # Fallback stroke approximation of "Nirbhay Verma"
+        strokes = [
+            # N
+            [(30, 140), (30, 50), (70, 140), (70, 50)],
+            # i
+            [(95, 140), (95, 80)],
+            [(95, 55), (95, 50)],
+            # r
+            [(120, 140), (120, 80), (155, 75)],
+            # b
+            [(175, 40), (175, 140), (210, 140), (220, 110), (210, 80), (175, 80)],
+            # h
+            [(245, 40), (245, 140)],
+            [(245, 85), (280, 80), (290, 110), (290, 140)],
+            # a
+            [(315, 110), (345, 80), (375, 110), (345, 140), (315, 110)],
+            # y
+            [(400, 80), (430, 140)],
+            [(460, 80), (420, 160), (400, 175)],
+            # V
+            [(500, 70), (530, 145), (560, 70)],
+            # e
+            [(580, 110), (610, 85), (640, 110), (610, 135), (580, 110)],
+            # r
+            [(655, 140), (655, 90), (685, 85)],
+            # m
+            [(700, 140), (700, 90), (720, 90), (730, 120), (730, 140)],
+            # a (second - squeezed: use flourish instead)
+            [(40, 165), (280, 175), (520, 160), (690, 120)],
+        ]
+        for stroke in strokes:
+            if len(stroke) == 2 and abs(stroke[0][0] - stroke[1][0]) < 2 and abs(stroke[0][1] - stroke[1][1]) < 8:
+                x, y = stroke[0]
+                draw.ellipse([x - 3, y - 3, x + 3, y + 3], fill=(*ACCENT, 255))
+            else:
+                draw.line(stroke, fill=(*ACCENT, 255), width=3, joint="curve")
+
     img.save(f"{OUT}/signature.png", optimize=True)
     print("signature")
 

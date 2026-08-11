@@ -12,7 +12,7 @@
   --muted: #8c8c8c;
   --border: rgba(255, 255, 255, 0.12);
   --accent: #FF6600;
-  --accent-dark: #6f9900;
+  --accent-dark: #CC5200;
 
   --font: "Space Grotesk", system-ui, sans-serif;
   --max: 1440px;
@@ -329,7 +329,7 @@ body.has-custom-cursor .cursor {
 
 .nav__dot-btn:hover {
   border-color: var(--accent);
-  box-shadow: 0 0 16px rgba(184, 255, 0, 0.15);
+  box-shadow: 0 0 16px rgba(255, 102, 0, 0.15);
 }
 
 .nav__dot-btn:hover .nav__dot-btn-inner,
@@ -443,8 +443,8 @@ body.has-custom-cursor .cursor {
 }
 
 .showreel-btn:hover {
-  background: rgba(184, 255, 0, 0.08);
-  box-shadow: 0 0 24px rgba(184, 255, 0, 0.18);
+  background: rgba(255, 102, 0, 0.08);
+  box-shadow: 0 0 24px rgba(255, 102, 0, 0.18);
 }
 
 .showreel-btn__time {
@@ -485,7 +485,7 @@ body.has-custom-cursor .cursor {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 62% 40%, rgba(184, 255, 0, 0.18), transparent 42%);
+    radial-gradient(circle at 62% 40%, rgba(255, 102, 0, 0.18), transparent 42%);
   pointer-events: none;
   mix-blend-mode: screen;
   animation: glowPulse 6s ease-in-out infinite alternate;
@@ -500,12 +500,12 @@ body.has-custom-cursor .cursor {
 .hero-visual__portal {
   width: 18%;
   aspect-ratio: 1;
-  border: 1px solid rgba(184, 255, 0, 0.35);
+  border: 1px solid rgba(255, 102, 0, 0.35);
   border-radius: 50%;
   top: 36%;
   left: 58%;
   transform: translate(-50%, -50%);
-  box-shadow: 0 0 40px rgba(184, 255, 0, 0.15);
+  box-shadow: 0 0 40px rgba(255, 102, 0, 0.15);
   animation: portalSpin 24s linear infinite;
 }
 
@@ -794,7 +794,7 @@ body.has-custom-cursor .cursor {
 .btn-outline:hover {
   color: var(--accent);
   border-color: var(--accent);
-  background: rgba(184, 255, 0, 0.04);
+  background: rgba(255, 102, 0, 0.04);
 }
 
 .btn-outline:hover .arrow {
@@ -860,7 +860,7 @@ body.has-custom-cursor .cursor {
 .timeline__item--active .timeline__marker {
   background: var(--accent);
   border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(184, 255, 0, 0.15), 0 0 18px rgba(184, 255, 0, 0.35);
+  box-shadow: 0 0 0 4px rgba(255, 102, 0, 0.15), 0 0 18px rgba(255, 102, 0, 0.35);
 }
 
 .timeline__year {
