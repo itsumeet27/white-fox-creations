@@ -1,24 +1,17 @@
 # Nirbhay Verma — Motion Graphics Portfolio
 
-Premium single-page portfolio (White Fox Creations).
+Premium portfolio for White Fox Creations.
 
 ## Live site
 
-Target URL: **https://white-fox-creations.github.io**
+**https://itsumeet27.github.io/white-fox-creations/**
 
-Pushes to `main` run `.github/workflows/deploy-pages.yml` and republish the site.
+- Home: https://itsumeet27.github.io/white-fox-creations/
+- Gallery: https://itsumeet27.github.io/white-fox-creations/gallery.html
 
-### Enable GitHub Pages (one-time)
+Every push to `main` runs `.github/workflows/deploy-pages.yml` and republishes automatically.
 
-1. Open repo **Settings → Pages**
-2. Set **Source** to **GitHub Actions**
-3. Merge this branch to `main` (or push to `main`) so the deploy workflow runs
-
-**About the URL:** `https://white-fox-creations.github.io` requires a GitHub user or organization named `white-fox-creations` with a repository named `white-fox-creations.github.io`.
-
-Until that exists, Pages for this repo publishes at:
-
-`https://itsumeet27.github.io/white-fox-creations/`
+> Note: `https://white-fox-creations.github.io` only works if a GitHub user/org named `white-fox-creations` owns a repo named `white-fox-creations.github.io`. Until then, the project Pages URL above is the live site.
 
 ## Run locally
 
@@ -26,14 +19,8 @@ Until that exists, Pages for this repo publishes at:
 python3 -m http.server 8080
 ```
 
-Open `http://localhost:8080`.
+Open `http://localhost:8080` (home) or `http://localhost:8080/gallery.html`.
 
 ## Accent
 
 Primary accent: `#FF6600`
-
-## Gallery page
-
-Open `gallery.html` for the full exhibition gallery (filters, sort, lightbox, reel modal).
-
-Linked from the homepage via **Explore Gallery** and the **Gallery** nav item.
