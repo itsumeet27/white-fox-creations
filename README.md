@@ -1,58 +1,33 @@
-# Motion Graphics Artist Portfolio
+# Nirbhay Verma — Motion Graphics Portfolio
 
-Premium single-page portfolio. Open `index.html` locally, or view the published site after GitHub Pages deploys.
+Premium single-page portfolio (White Fox Creations).
 
 ## Live site
 
-Target production URL: **https://white-fox-creations.github.io**
+Target URL: **https://white-fox-creations.github.io**
 
-Every push to `main` triggers GitHub Actions (`.github/workflows/deploy-pages.yml`) and republishes the site.
+Pushes to `main` run `.github/workflows/deploy-pages.yml` and republish the site.
 
-### One-time GitHub setup for `white-fox-creations.github.io`
+### Enable GitHub Pages (one-time)
 
-1. Create a GitHub user or organization named **`white-fox-creations`**.
-2. Create a repository named exactly **`white-fox-creations.github.io`** (this name is required for that URL).
-3. Push this project’s `main` branch to that repository.
-4. In the repo: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-5. Confirm the Actions workflow `Deploy GitHub Pages` runs successfully.
+1. Open repo **Settings → Pages**
+2. Set **Source** to **GitHub Actions**
+3. Merge this branch to `main` (or push to `main`) so the deploy workflow runs
 
-Until that org/repo exists, merging to `main` on this repo can still publish to:
+**About the URL:** `https://white-fox-creations.github.io` requires a GitHub user or organization named `white-fox-creations` with a repository named `white-fox-creations.github.io`.
 
-`https://itsumeet27.github.io/motion-graphics-artist-portfolio/`
+Until that exists, Pages for this repo publishes at:
 
-(after enabling Pages with the GitHub Actions source on this repository).
+`https://itsumeet27.github.io/white-fox-creations/`
 
 ## Run locally
 
 ```bash
-# optional local server
 python3 -m http.server 8080
 ```
 
 Open `http://localhost:8080`.
 
-## Structure
+## Accent
 
-```text
-index.html
-css/style.css
-css/responsive.css
-js/main.js
-js/animations.js
-js/gallery.js
-js/cursor.js
-assets/images/
-assets/videos/
-assets/icons/
-.github/workflows/deploy-pages.yml
-```
-
-## Replace assets
-
-- Hero: `assets/images/hero-cinematic.jpg`
-- Projects: `assets/images/project-*.jpg`
-- Gallery: `assets/images/gallery-0*.jpg`
-- Portrait / signature: `assets/images/portrait.jpg`, `signature.png`
-- Showreel: `assets/videos/showreel.mp4`
-
-Accent color: `#FF6600`
+Primary accent: `#FF6600`
