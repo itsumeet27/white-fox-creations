@@ -14,10 +14,17 @@
     });
   }
 
+  function revealMasksIn(scope) {
+    scope.querySelectorAll(".project-image").forEach((el) => {
+      el.classList.add("is-revealed");
+    });
+  }
+
   function initScrollReveals() {
     const reveals = document.querySelectorAll(".reveal");
     const masks = document.querySelectorAll(".project-image");
 
+    /* Clip the inner media — never the observed box (clip-path zeroes IO). */
     masks.forEach((el) => el.classList.add("is-mask"));
 
     if (reduceMotion || !("IntersectionObserver" in window)) {
@@ -31,26 +38,30 @@
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
           entry.target.classList.add("is-visible");
+          revealMasksIn(entry.target);
           io.unobserve(entry.target);
         });
       },
-      { rootMargin: "0px 0px -10% 0px", threshold: 0.12 }
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
     );
 
     reveals.forEach((el) => io.observe(el));
 
-    const maskIo = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-revealed");
-          maskIo.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    masks.forEach((el) => maskIo.observe(el));
+    /* Standalone project images outside .reveal (if any) */
+    const orphanMasks = Array.from(masks).filter((el) => !el.closest(".reveal"));
+    if (orphanMasks.length) {
+      const maskIo = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("is-revealed");
+            maskIo.unobserve(entry.target);
+          });
+        },
+        { rootMargin: "40px 0px", threshold: 0.05 }
+      );
+      orphanMasks.forEach((el) => maskIo.observe(el));
+    }
   }
 
   function initParallax() {
@@ -67,12 +78,9 @@
         const center = rect.top + rect.height / 2;
         const progress = (center - vh / 2) / vh;
         const y = Math.max(-12, Math.min(12, progress * -18));
-        const media = node.querySelector("img, .hero-visual__media");
-        if (media && !media.classList.contains("hero-visual__media")) {
-          media.style.transform = `translate3d(0, ${y}px, 0)`;
-        } else if (node.classList.contains("experience__portrait") || node.querySelector(".portrait")) {
-          const img = node.querySelector(".portrait > img:first-child");
-          if (img) img.style.transform = `translate3d(0, ${y}px, 0) scale(1.04)`;
+        const portraitImg = node.querySelector(".portrait > img:first-child");
+        if (portraitImg) {
+          portraitImg.style.transform = `translate3d(0, ${y}px, 0) scale(1.04)`;
         }
       });
       ticking = false;
