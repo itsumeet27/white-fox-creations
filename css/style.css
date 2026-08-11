@@ -586,7 +586,7 @@ body.has-custom-cursor .cursor {
 .work-featured__meta {
   grid-area: meta;
   padding-bottom: 0.5rem;
-  align-self: end;
+  align-self: center;
 }
 
 .work-secondary {
