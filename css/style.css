@@ -1226,7 +1226,12 @@ body.has-custom-cursor .cursor {
   opacity: 0.85;
 }
 
-.modal__video:has(video:not([data-empty])) .modal__fallback {
+.modal__fallback code {
+  color: var(--accent);
+  font-family: ui-monospace, monospace;
+}
+
+.modal__fallback[hidden] {
   display: none;
 }
 

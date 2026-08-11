@@ -80,11 +80,17 @@
     document.body.style.overflow = "hidden";
     const closeBtn = modal.querySelector(".modal__close");
     if (closeBtn) closeBtn.focus();
-    // Only attempt play on larger screens / when source may exist
-    if (video && window.matchMedia("(min-width: 768px)").matches) {
-      video.play().catch(() => {
-        /* placeholder source may 404 — ignore */
-      });
+    const fallback = modal.querySelector(".modal__fallback");
+    if (video) {
+      const hideFallback = () => {
+        if (fallback) fallback.hidden = true;
+      };
+      video.addEventListener("loadeddata", hideFallback, { once: true });
+      if (window.matchMedia("(min-width: 768px)").matches) {
+        video.play().then(hideFallback).catch(() => {
+          /* placeholder may fail — keep note visible */
+        });
+      }
     }
   }
 
