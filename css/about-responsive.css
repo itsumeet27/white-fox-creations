@@ -2,9 +2,31 @@
 
 @media (max-width: 1100px) {
   .about-hero__grid,
+  .about-intro__grid,
   .discipline__grid,
   .discipline__grid--flip {
     grid-template-columns: 1fr;
+  }
+
+  .about-hero {
+    max-height: none;
+    min-height: auto;
+    overflow: visible;
+  }
+
+  .about-hero__visual {
+    max-height: min(48vh, 420px);
+    justify-self: stretch;
+  }
+
+  .about-intro__visual {
+    position: static;
+  }
+
+  .intro-graphic {
+    min-height: 320px;
+    max-width: 420px;
+    margin-inline: auto;
   }
 
   .tool {
@@ -40,10 +62,24 @@
   .nav__dot-btn { display: none; }
   body.nav-open { overflow: hidden; }
 
-  .about-hero { min-height: auto; padding-top: calc(var(--header-h) + 1.5rem); }
-  .about-hero__title { font-size: clamp(2.8rem, 12vw, 3.8rem); }
+  .about-hero { min-height: auto; max-height: none; padding-top: calc(var(--header-h) + 1.25rem); }
+  .about-hero__title { font-size: clamp(2.1rem, 9vw, 2.85rem); }
   .about-hero__visual { max-height: none; aspect-ratio: 4/5; }
-  .about-hero__stats { flex-direction: column; align-items: flex-start; }
+  .about-hero__stats { flex-direction: column; align-items: flex-start; gap: .75rem; }
+  .about-hero__years .accent { display: inline; }
+
+  .about-intro__statement { font-size: clamp(1.55rem, 7vw, 2.1rem); }
+  .about-intro__statement-b { font-size: clamp(1.2rem, 5.5vw, 1.55rem); }
+
+  .intro-graphic { min-height: 280px; }
+  .intro-graphic__frame { width: min(82%, 280px); }
+
+  .question__body { margin-left: 0; }
+  .question.is-active .question__body,
+  .question:hover .question__body,
+  .question:focus-visible .question__body {
+    max-height: 10rem;
+  }
 
   .evolution__scroller {
     grid-auto-flow: row;
