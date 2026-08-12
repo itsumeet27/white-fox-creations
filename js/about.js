@@ -66,7 +66,7 @@
     nodes.forEach((n) => io.observe(n));
   }
 
-  /* Question storytelling — scroll highlight + hover */
+  /* Approach question cards — highlight on hover / focus / scroll */
   function initQuestions() {
     const questions = Array.from(document.querySelectorAll(".question"));
     if (!questions.length) return;
@@ -98,7 +98,7 @@
         if (!visible.length) return;
         setActive(visible[0].target);
       },
-      { threshold: [0.35, 0.55, 0.75], rootMargin: "-28% 0px -42% 0px" }
+      { threshold: [0.4, 0.65], rootMargin: "-18% 0px -28% 0px" }
     );
     questions.forEach((q) => io.observe(q));
   }
