@@ -74,11 +74,21 @@
   .intro-graphic { min-height: 280px; }
   .intro-graphic__frame { width: min(82%, 280px); }
 
-  .question__body { margin-left: 0; }
-  .question.is-active .question__body,
-  .question:hover .question__body,
-  .question:focus-visible .question__body {
-    max-height: 10rem;
+  .questions {
+    grid-template-columns: 1fr;
+  }
+
+  .question {
+    padding: 1.5rem 1.25rem 1.35rem;
+  }
+
+  .question__title {
+    max-width: none;
+    padding-right: 3rem;
+  }
+
+  .question__body {
+    max-width: none;
   }
 
   .evolution__scroller {
