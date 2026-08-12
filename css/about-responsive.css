@@ -46,6 +46,12 @@
   }
 }
 
+@media (max-width: 900px) {
+  .questions {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 767px) {
   :root { --header-h: 4rem; }
 

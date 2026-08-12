@@ -453,15 +453,25 @@ body.has-custom-cursor .cursor { display: block; }
     box-shadow .35s ease;
   z-index: 2;
 }
-.question__num:hover,
-.question:hover .question__num,
-.question:focus-visible .question__num,
-.question.is-active .question__num {
-  transform: scale(1.18);
+.question__num:hover {
+  transform: scale(1.28);
   background: var(--accent);
   color: #070707;
   border-color: var(--accent);
-  box-shadow: 0 0 22px var(--accent-glow);
+  box-shadow: 0 0 26px var(--accent-glow);
+}
+.question:hover .question__num,
+.question:focus-visible .question__num,
+.question.is-active .question__num {
+  transform: scale(1.12);
+  background: var(--accent);
+  color: #070707;
+  border-color: var(--accent);
+  box-shadow: 0 0 18px var(--accent-glow);
+}
+.question:hover .question__num:hover {
+  transform: scale(1.28);
+  box-shadow: 0 0 26px var(--accent-glow);
 }
 .question__index {
   font-size: .65rem;
