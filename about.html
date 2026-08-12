@@ -3,51 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="About Nirbhay Verma — Graphic Visualizer and Motion Graphics Artist. From static design to motion storytelling.">
-  <meta name="theme-color" content="#080808">
+  <meta name="description" content="About Nirbhay Verma — a journey from graphic design to motion graphics. Visual storytelling across pixels and frames.">
+  <meta name="theme-color" content="#070707">
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
   <title>About — Nirbhay Verma</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/responsive.css">
-  <style>
-    .about-page {
-      padding: calc(var(--header-h) + 3rem) 0 5rem;
-    }
-    .about-page__lead {
-      max-width: 52ch;
-      color: #858585;
-      font-size: 1.05rem;
-      line-height: 1.7;
-      margin: 1.5rem 0 2.5rem;
-    }
-    .about-page__grid {
-      display: grid;
-      gap: 1.5rem;
-      max-width: 70ch;
-    }
-    .about-page__grid p {
-      color: #858585;
-      font-size: 1.05rem;
-      line-height: 1.75;
-    }
-    .about-page__grid .accent { color: var(--accent); font-weight: 500; }
-    .about-page__back {
-      display: inline-flex;
-      margin-top: 3rem;
-      font-size: 0.75rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      transition: color 0.3s ease;
-    }
-    .about-page__back:hover { color: var(--accent); }
-  </style>
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/about-responsive.css">
 </head>
 <body>
-  <header class="site-header is-ready is-scrolled" id="top">
+  <div class="page-loader" aria-hidden="true">
+    <div class="page-loader__inner">
+      <div class="page-loader__logo">NV</div>
+      <p class="page-loader__meta">About <span>/ 01</span></p>
+    </div>
+  </div>
+
+  <div class="cursor" aria-hidden="true">
+    <span class="cursor__dot"></span>
+    <span class="cursor__ring"></span>
+    <span class="cursor__label">VIEW</span>
+  </div>
+
+  <header class="site-header" id="top">
     <nav class="nav" aria-label="Primary">
       <a href="index.html" class="nav__logo" aria-label="Nirbhay Verma home">NV</a>
       <ul class="nav__links" id="nav-links">
@@ -58,60 +38,348 @@
         <li><a href="index.html#contact">Contact</a></li>
       </ul>
       <div class="nav__actions">
-        <button class="nav__dot-btn" type="button" aria-label="Interaction"><span class="nav__dot-btn-inner"></span></button>
+        <button class="nav__dot-btn" type="button" aria-label="Interaction" data-cursor="button"><span></span></button>
         <button class="nav__menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu"><span>Menu</span></button>
       </div>
     </nav>
   </header>
 
-  <main class="about-page">
-    <div class="container">
-      <p class="section-label"><span class="dot" aria-hidden="true"></span> About Nirbhay</p>
-      <h1 class="about-statement" style="opacity:1;transform:none">
-        <span class="about-statement__line" style="opacity:1;transform:none">From</span>
-        <span class="about-statement__line" style="opacity:1;transform:none">Static</span>
-        <span class="about-statement__line about-statement__line--muted" style="opacity:1;transform:none">To</span>
-        <span class="about-statement__line about-statement__line--accent" style="opacity:1;transform:none">Motion<span class="accent">.</span></span>
-      </h1>
-      <p class="about-page__lead">
-        A multidisciplinary visual creative combining design, motion and storytelling —
-        turning ideas into experiences that communicate, engage and leave an impression.
-      </p>
-
-      <div class="about-page__grid">
-        <p>
-          With <span class="accent">6+ years</span> of experience in the creative industry, Nirbhay Verma has evolved from a graphic designer into a versatile <span class="accent">Motion Graphics Artist and Visual Designer</span>, combining static design with movement, rhythm and visual storytelling.
-        </p>
-        <p>
-          His work goes beyond creating compelling images. From crafting layouts and visual identities in <span class="accent">Adobe Photoshop</span> and <span class="accent">Canva</span> to bringing ideas to life through <span class="accent">Adobe Premiere Pro</span> and <span class="accent">After Effects</span>, Nirbhay works across the entire visual spectrum — from the first concept to the final frame.
-        </p>
-        <p>
-          With a strong eye for composition, detail and visual balance, he transforms ideas into visuals that are designed not just to be seen, but to <strong style="color:var(--text)">communicate, engage and leave an impression</strong>.
-        </p>
+  <main>
+    <!-- HERO -->
+    <section class="about-hero" aria-label="Introduction">
+      <div class="about-hero__grid">
+        <div>
+          <p class="section-label reveal-load" data-delay="1"><span class="dot" aria-hidden="true"></span> About Nirbhay</p>
+          <h1 class="about-hero__title reveal-load" data-delay="2">
+            A Journey<br>
+            From Design<br>
+            <span class="accent">To Motion.</span>
+          </h1>
+        </div>
+        <div class="about-hero__visual reveal-load" data-delay="3" data-cursor="view">
+          <img src="assets/images/about/hero-studio.jpg" alt="Dark editorial studio composition with orange light and design fragments" width="1400" height="1600" decoding="async">
+          <div class="about-hero__glow" aria-hidden="true"></div>
+        </div>
       </div>
+      <div class="about-hero__stats reveal-load" data-delay="4">
+        <p class="about-hero__years">
+          <span class="accent">6+ Years</span>
+          of creating<br>visual experiences.
+        </p>
+        <p class="about-hero__disciplines">Graphic Design · Visual Design · Video · Motion Graphics</p>
+      </div>
+    </section>
 
-      <ol class="about-journey is-drawn" aria-label="Creative journey" style="margin-top:3rem;max-width:720px">
-        <li class="about-journey__item">
-          <span class="about-journey__num">01</span>
-          <span class="about-journey__label">Graphic Design</span>
-        </li>
-        <li class="about-journey__item" aria-hidden="true"><span class="about-journey__arrow">→</span></li>
-        <li class="about-journey__item">
-          <span class="about-journey__num">02</span>
-          <span class="about-journey__label">Visual Design</span>
-        </li>
-        <li class="about-journey__item" aria-hidden="true"><span class="about-journey__arrow">→</span></li>
-        <li class="about-journey__item about-journey__item--active">
-          <span class="about-journey__num">03</span>
-          <span class="about-journey__label">Motion Graphics</span>
-        </li>
-        <li class="about-journey__line" aria-hidden="true"></li>
-      </ol>
+    <!-- INTRODUCTION -->
+    <section class="about-intro">
+      <div class="container reveal">
+        <p class="chapter"><span>01</span> / The Beginning</p>
+        <p class="about-intro__statement">
+          Good visual<br>
+          communication<br>
+          isn't just about<br>
+          <span class="accent">looking good.</span>
+        </p>
+        <p class="about-intro__statement-b">
+          It's about<br>
+          giving an idea<br>
+          the right<br>
+          <span class="accent">visual language.</span>
+        </p>
+        <div class="about-bio">
+          <p>
+            For over <strong>6+ years</strong>, Nirbhay Verma has been building his career around one simple idea — that good visual communication is not just about making something look appealing, but about giving an idea the right visual language.
+          </p>
+          <p>
+            His journey began with <span class="accent">graphic design</span>, where he developed a strong foundation in composition, typography, colour, layout and visual hierarchy. Working extensively with tools such as Adobe Photoshop and Canva, he learned to transform concepts and information into clear, engaging and visually refined designs.
+          </p>
+          <p>
+            Over time, his curiosity for <span class="accent">visual storytelling</span> naturally led him beyond static imagery and into the world of <span class="accent">motion graphics</span>.
+          </p>
+          <p>
+            Today, Nirbhay works across both static and moving visual mediums, combining graphic design principles with animation, editing and motion to create more dynamic visual experiences.
+          </p>
+        </div>
+      </div>
+    </section>
 
-      <a class="about-page__back" href="index.html#about">← Back to homepage</a>
-    </div>
+    <!-- FROM IMAGE TO MOTION -->
+    <section class="from-motion" aria-label="From image to motion">
+      <div class="container reveal">
+        <h2 class="from-motion__title">From Image<br><span class="accent">To Motion.</span></h2>
+        <div class="from-motion__track" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- 01 GRAPHIC DESIGN -->
+    <section class="discipline" id="graphic-design">
+      <div class="container discipline__grid reveal">
+        <div>
+          <p class="discipline__num">01</p>
+          <h2 class="discipline__title">Graphic<br>Design</h2>
+          <p class="discipline__copy">
+            From social media creatives and campaign visuals to compositions, layouts and digital artwork, Nirbhay uses Adobe Photoshop and Canva to develop designs that balance creativity with clarity.
+          </p>
+          <div class="discipline__caps">
+            <span>Composition</span><span>Typography</span><span>Colour</span><span>Visual Hierarchy</span>
+            <span>Image Manipulation</span><span>Creative Layouts</span><span>Digital Artwork</span>
+          </div>
+        </div>
+        <div class="discipline__media" data-cursor="view">
+          <img src="assets/images/about/discipline-graphic.jpg" alt="Layered graphic design composition transforming through frames" width="1200" height="800" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 VIDEO -->
+    <section class="discipline" id="video">
+      <div class="container discipline__grid discipline__grid--flip reveal">
+        <div>
+          <div class="discipline__media" data-cursor="view">
+            <video
+              poster="assets/images/about/discipline-video.jpg"
+              muted
+              playsinline
+              loop
+              preload="none"
+              controls
+              aria-label="Video editing placeholder"
+            >
+              <source src="assets/videos/showreel.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="timeline-bar" aria-hidden="true" data-cursor="next">
+            <div class="timeline-bar__track"></div>
+            <div class="timeline-bar__playhead"></div>
+            <div class="timeline-bar__marks">
+              <span>0s</span><span>04s</span><span>08s</span><span>14s</span><span>20s</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="discipline__num">02</p>
+          <h2 class="discipline__title">Video<br>&amp;<br>Editing</h2>
+          <p class="discipline__copy">
+            With his transition into motion graphics, video became another medium through which he could communicate ideas.
+          </p>
+          <p class="discipline__copy">
+            Using Adobe Premiere Pro, Nirbhay works with video editing, sequencing, pacing and storytelling to turn individual shots into cohesive visual narratives.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 MOTION -->
+    <section class="discipline" id="motion">
+      <div class="container discipline__grid reveal">
+        <div>
+          <p class="discipline__num">03</p>
+          <h2 class="discipline__title">Motion<br>Graphics</h2>
+          <p class="discipline__copy">
+            With Adobe After Effects, Nirbhay brings static design elements into motion.
+          </p>
+          <p class="discipline__copy">
+            From animated typography and graphic transitions to visual effects, compositing and motion-driven compositions, he combines his graphic design background with animation to create visuals that have movement, energy and personality.
+          </p>
+          <div class="motion-stack" aria-hidden="true">
+            <span>Static Type <span class="arrow">↓</span></span>
+            <span>Movement <span class="arrow">↓</span></span>
+            <span>Transition <span class="arrow">↓</span></span>
+            <span class="hl">Motion</span>
+          </div>
+        </div>
+        <div class="discipline__media" data-cursor="view">
+          <img src="assets/images/about/discipline-motion.jpg" alt="Static type transforming into motion with orange trails" width="1200" height="800" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </section>
+
+    <!-- APPROACH -->
+    <section class="approach" id="approach">
+      <div class="container">
+        <div class="reveal">
+          <p class="chapter"><span>02</span> / The Approach</p>
+          <h2 class="approach__title">The Idea<br>Comes First.</h2>
+        </div>
+        <div class="questions" role="list">
+          <p class="question is-active" role="listitem"><span class="question__mark" aria-hidden="true"></span> What is the message?</p>
+          <p class="question" role="listitem"><span class="question__mark" aria-hidden="true"></span> Who is it for?</p>
+          <p class="question" role="listitem"><span class="question__mark" aria-hidden="true"></span> What should the audience feel?</p>
+          <p class="question" role="listitem"><span class="question__mark" aria-hidden="true"></span> How can the visual communicate that idea more effectively?</p>
+        </div>
+        <div class="philosophy reveal">
+          <p>
+            This approach allows Nirbhay to balance creativity with purpose.
+          </p>
+          <p>
+            Whether it is a static graphic, a promotional video, an animated composition or a complete motion sequence, the objective remains the same — <span class="accent">create something visually engaging without losing the message.</span>
+          </p>
+          <p class="creativity-purpose reveal">
+            Creativity
+            <span class="plus">+</span>
+            Purpose
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRECISION -->
+    <section class="precision" aria-label="Precision in every frame">
+      <img class="precision__bg" src="assets/images/about/precision-board.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <div class="precision__content">
+        <h2 class="precision__title">Precision<br>In Every<br><span class="accent">Frame.</span></h2>
+        <div class="detail-words" aria-label="Craft principles">
+          <span>Spacing.</span>
+          <span>Typography.</span>
+          <span>Timing.</span>
+          <span>Transitions.</span>
+          <span>Colour.</span>
+          <span>Composition.</span>
+        </div>
+        <div class="detail-lines">
+          <p>Every frame has a purpose.</p>
+          <p>Every movement has a reason.</p>
+          <p>Every detail contributes to the story.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVOLUTION -->
+    <section class="evolution" id="evolution" aria-label="Creative evolution">
+      <h2 class="evolution__title reveal">The<br><span class="accent">Evolution.</span></h2>
+      <div class="evolution__scroller" data-cursor="next">
+        <article class="evolution__stage">
+          <div>
+            <p class="evolution__stage-num">01</p>
+            <h3 class="evolution__stage-title">Graphic Designer</h3>
+          </div>
+          <div class="evolution__stage-copy">
+            <p>Where it started.</p>
+            <p>Building a foundation in composition, typography, colour, layouts and digital artwork.</p>
+          </div>
+          <div class="evolution__stage-media">
+            <img src="assets/images/about/discipline-graphic.jpg" alt="Graphic design foundation visual" width="1200" height="800" loading="lazy" decoding="async">
+          </div>
+        </article>
+        <article class="evolution__stage">
+          <div>
+            <p class="evolution__stage-num">02</p>
+            <h3 class="evolution__stage-title">Visual Designer</h3>
+          </div>
+          <div class="evolution__stage-copy">
+            <p>Learning to think beyond individual graphics and create visual systems and experiences with consistency and purpose.</p>
+          </div>
+          <div class="evolution__stage-media">
+            <img src="assets/images/about/portrait-editorial.jpg" alt="Visual systems and editorial design" width="1000" height="1300" loading="lazy" decoding="async">
+          </div>
+        </article>
+        <article class="evolution__stage">
+          <div>
+            <p class="evolution__stage-num">03</p>
+            <h3 class="evolution__stage-title">Motion Graphics Artist</h3>
+          </div>
+          <div class="evolution__stage-copy">
+            <p>Bringing design into movement through animation, editing, transitions, visual effects and storytelling.</p>
+          </div>
+          <div class="evolution__stage-media">
+            <img src="assets/images/about/discipline-motion.jpg" alt="Motion graphics transformation" width="1200" height="800" loading="lazy" decoding="async">
+          </div>
+        </article>
+        <article class="evolution__stage evolution__stage--today">
+          <div>
+            <p class="evolution__stage-num">04</p>
+            <h3 class="evolution__stage-title">Today</h3>
+          </div>
+          <div class="evolution__stage-copy">
+            <p>A multidisciplinary visual creative working across graphic design, video editing and motion graphics, continuously exploring new techniques, styles and ways of communicating through visuals.</p>
+          </div>
+          <div class="evolution__stage-media">
+            <img src="assets/images/about/hero-studio.jpg" alt="Current multidisciplinary creative practice" width="1400" height="1600" loading="lazy" decoding="async">
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- TOOLKIT -->
+    <section class="toolkit" id="toolkit">
+      <div class="container reveal">
+        <h2 class="toolkit__title">The<br><span class="accent">Toolkit.</span></h2>
+        <div class="toolkit__list">
+          <article class="tool" data-cursor="explore" tabindex="0">
+            <h3 class="tool__name">Photoshop</h3>
+            <p class="tool__desc">Image manipulation, compositing, digital artwork and visual compositions.</p>
+            <div class="tool__preview"><img src="assets/images/about/tool-ps.jpg" alt="" loading="lazy" decoding="async"></div>
+          </article>
+          <article class="tool" data-cursor="explore" tabindex="0">
+            <h3 class="tool__name">Canva</h3>
+            <p class="tool__desc">Rapid creative development, layouts, social content and visual communication.</p>
+            <div class="tool__preview"><img src="assets/images/about/tool-canva.jpg" alt="" loading="lazy" decoding="async"></div>
+          </article>
+          <article class="tool" data-cursor="explore" tabindex="0">
+            <h3 class="tool__name">Premiere Pro</h3>
+            <p class="tool__desc">Video editing, sequencing, pacing, transitions and visual storytelling.</p>
+            <div class="tool__preview"><img src="assets/images/about/tool-pr.jpg" alt="" loading="lazy" decoding="async"></div>
+          </article>
+          <article class="tool" data-cursor="explore" tabindex="0">
+            <h3 class="tool__name">After Effects</h3>
+            <p class="tool__desc">Motion graphics, animation, typography, visual effects and compositing.</p>
+            <div class="tool__preview"><img src="assets/images/about/tool-ae.jpg" alt="" loading="lazy" decoding="async"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- THINKING -->
+    <section class="thinking">
+      <div class="container reveal">
+        <p class="chapter"><span>03</span> / The Thinking</p>
+        <h2 class="thinking__title">Tools Are<br>Only Part<br>Of The Process.</h2>
+        <p class="thinking__copy">
+          What makes a visual effective is the thinking behind it — the ability to understand an idea, find its visual language and execute it with precision.
+        </p>
+        <div class="thinking__lines">
+          <p>From pixels to frames.</p>
+          <p>From design to motion.</p>
+          <p>From ideas to visual experiences.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVOLVING -->
+    <section class="evolving" aria-label="The journey continues">
+      <div class="evolving__particles" aria-hidden="true"></div>
+      <h2 class="evolving__title reveal">The Journey<br>Is Still<br><span class="accent">Evolving.</span></h2>
+    </section>
+
+    <!-- CTA -->
+    <section class="about-cta">
+      <div class="container reveal">
+        <h2 class="about-cta__title">Let's Create<br>Something<br><span class="accent">That Moves.</span></h2>
+        <p class="about-cta__copy">
+          Whether it begins as a single graphic, a visual concept, a video or an idea that needs to come alive, Nirbhay brings together design, motion and storytelling to create work with purpose and personality.
+        </p>
+        <div class="about-cta__actions">
+          <a class="btn-primary" href="index.html#work" data-cursor="button">Explore the Work <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn-secondary" href="mailto:hello@nirbhayverma.com" data-cursor="button">Start a Conversation <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <script src="js/main.js" defer></script>
+  <footer class="site-footer">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <strong>NV</strong>
+        <span>© 2026 Nirbhay Verma. All Rights Reserved.</span>
+      </div>
+      <ul class="site-footer__social">
+        <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+      </ul>
+      <a href="#top" class="site-footer__top" data-cursor="button">Back to Top <span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
+
+  <script src="js/about.js" defer></script>
 </body>
 </html>
