@@ -66,31 +66,39 @@
     nodes.forEach((n) => io.observe(n));
   }
 
-  /* Question storytelling */
+  /* Question storytelling — scroll highlight + hover */
   function initQuestions() {
     const questions = Array.from(document.querySelectorAll(".question"));
     if (!questions.length) return;
-    if (reduce || !("IntersectionObserver" in window)) {
-      questions.forEach((q, i) => {
-        q.classList.toggle("is-active", i === questions.length - 1);
-        q.classList.toggle("is-passed", i < questions.length - 1);
+
+    const setActive = (active) => {
+      const activeIdx = questions.indexOf(active);
+      questions.forEach((q, idx) => {
+        q.classList.toggle("is-active", q === active);
+        q.classList.toggle("is-passed", idx < activeIdx);
       });
+    };
+
+    questions.forEach((q) => {
+      q.addEventListener("mouseenter", () => setActive(q));
+      q.addEventListener("focus", () => setActive(q));
+      q.addEventListener("click", () => setActive(q));
+    });
+
+    if (reduce || !("IntersectionObserver" in window)) {
+      setActive(questions[0]);
       return;
     }
+
     const io = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const active = entry.target;
-          questions.forEach((q) => {
-            const idx = questions.indexOf(q);
-            const activeIdx = questions.indexOf(active);
-            q.classList.toggle("is-active", q === active);
-            q.classList.toggle("is-passed", idx < activeIdx);
-          });
-        });
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (!visible.length) return;
+        setActive(visible[0].target);
       },
-      { threshold: 0.7, rootMargin: "-20% 0px -35% 0px" }
+      { threshold: [0.35, 0.55, 0.75], rootMargin: "-28% 0px -42% 0px" }
     );
     questions.forEach((q) => io.observe(q));
   }
