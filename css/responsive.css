@@ -44,8 +44,13 @@
     width: 100%;
   }
 
-  .about-gallery__grid {
+  .about-section__grid {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about-statement {
+    font-size: clamp(3rem, 6vw, 4.5rem);
   }
 
   .gallery__track {
@@ -119,8 +124,29 @@
     top: 0.2rem;
   }
 
-  .about__body {
+  .about-journey {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding-left: 0;
+  }
+
+  .about-journey__line {
+    display: none;
+  }
+
+  .about-journey__arrow {
+    padding-top: 0;
+    transform: rotate(90deg);
+    width: fit-content;
+  }
+
+  .about-journey__item {
+    padding-left: 1rem;
+    border-left: 1px solid var(--border);
+  }
+
+  .about-journey__item--active {
+    border-left-color: var(--accent);
   }
 
   .site-footer__grid {

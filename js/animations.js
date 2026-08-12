@@ -30,6 +30,7 @@
     if (reduceMotion || !("IntersectionObserver" in window)) {
       reveals.forEach((el) => el.classList.add("is-visible"));
       masks.forEach((el) => el.classList.add("is-revealed"));
+      document.querySelectorAll(".about-journey").forEach((el) => el.classList.add("is-drawn"));
       return;
     }
 
@@ -39,6 +40,8 @@
           if (!entry.isIntersecting) return;
           entry.target.classList.add("is-visible");
           revealMasksIn(entry.target);
+          const journey = entry.target.querySelector(".about-journey");
+          if (journey) journey.classList.add("is-drawn");
           io.unobserve(entry.target);
         });
       },
