@@ -16,36 +16,6 @@
     }, delay);
   }
 
-  /* Sticky header */
-  function initHeader() {
-    const header = document.querySelector(".site-header");
-    const links = document.getElementById("nav-links");
-    const toggle = document.querySelector(".nav__menu-toggle");
-    const onScroll = () => {
-      if (header) header.classList.toggle("is-scrolled", window.scrollY > 24);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-
-    if (toggle && links) {
-      toggle.addEventListener("click", () => {
-        const open = !links.classList.contains("is-open");
-        links.classList.toggle("is-open", open);
-        document.body.classList.toggle("nav-open", open);
-        toggle.setAttribute("aria-expanded", String(open));
-        toggle.querySelector("span").textContent = open ? "Close" : "Menu";
-      });
-      links.querySelectorAll("a").forEach((a) =>
-        a.addEventListener("click", () => {
-          links.classList.remove("is-open");
-          document.body.classList.remove("nav-open");
-          toggle.setAttribute("aria-expanded", "false");
-          toggle.querySelector("span").textContent = "Menu";
-        })
-      );
-    }
-  }
-
   /* Scroll reveals */
   function initReveals() {
     const nodes = document.querySelectorAll(".reveal, .precision");
@@ -139,23 +109,10 @@
     document.addEventListener("mouseleave", () => cursor.classList.remove("is-active"));
   }
 
-  /* Back to top */
-  function initTop() {
-    document.querySelectorAll('a[href="#top"]').forEach((a) => {
-      a.addEventListener("click", (e) => {
-        if (reduce) return;
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-    });
-  }
-
   document.addEventListener("DOMContentLoaded", () => {
     initIntro();
-    initHeader();
     initReveals();
     initQuestions();
     initCursor();
-    initTop();
   });
 })();

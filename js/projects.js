@@ -8,8 +8,6 @@
   const els = {
     header: document.querySelector(".site-header"),
     loader: document.querySelector(".page-loader"),
-    navLinks: document.getElementById("nav-links"),
-    menuToggle: document.querySelector(".nav__menu-toggle"),
     image: document.getElementById("project-hero-image"),
     frame: document.querySelector(".project-frame"),
     title: document.getElementById("project-title"),
@@ -224,45 +222,6 @@
     }
   }
 
-  function initNav() {
-    function onScroll() {
-      if (els.header) els.header.classList.toggle("is-scrolled", window.scrollY > 24);
-    }
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-
-    if (els.menuToggle && els.navLinks) {
-      els.menuToggle.addEventListener("click", () => {
-        const open = !els.navLinks.classList.contains("is-open");
-        els.navLinks.classList.toggle("is-open", open);
-        document.body.classList.toggle("nav-open", open);
-        els.menuToggle.setAttribute("aria-expanded", String(open));
-        els.menuToggle.querySelector("span").textContent = open ? "Close" : "Menu";
-      });
-      els.navLinks.querySelectorAll("a").forEach((a) => {
-        a.addEventListener("click", () => {
-          els.navLinks.classList.remove("is-open");
-          document.body.classList.remove("nav-open");
-          els.menuToggle.setAttribute("aria-expanded", "false");
-          els.menuToggle.querySelector("span").textContent = "Menu";
-        });
-      });
-    }
-
-    const dotBtn = document.querySelector(".nav__dot-btn");
-    if (dotBtn) {
-      dotBtn.addEventListener("click", () => dotBtn.classList.toggle("is-active"));
-    }
-
-    document.querySelectorAll('a[href="#top"]').forEach((a) => {
-      a.addEventListener("click", (e) => {
-        if (reduce) return;
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-    });
-  }
-
   function initCursor() {
     const fine = window.matchMedia("(hover: hover) and (pointer: fine)");
     if (!fine.matches || reduce) return;
@@ -337,7 +296,6 @@
       initShowMore();
       initReelNav();
       initBannerClicks();
-      initNav();
       initCursor();
       initKeyboard();
       syncHash();
