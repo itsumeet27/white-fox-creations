@@ -126,6 +126,15 @@
     });
   }
 
+  function scrollBannerTo(frame, behavior) {
+    if (!els.banner || !frame) return;
+    const left = frame.offsetLeft - (els.banner.clientWidth - frame.offsetWidth) / 2;
+    els.banner.scrollTo({
+      left: Math.max(0, left),
+      behavior: behavior || (reduce ? "auto" : "smooth")
+    });
+  }
+
   function renderBanner() {
     const cat = currentCategory();
     if (!cat || !els.banner) return;
@@ -158,16 +167,13 @@
           el.classList.toggle("is-active", on);
           el.setAttribute("aria-pressed", String(on));
         });
-        frame.scrollIntoView({ behavior: reduce ? "auto" : "smooth", inline: "center", block: "nearest" });
+        scrollBannerTo(frame);
         syncHash();
-        window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
       });
     });
 
     const active = els.banner.querySelector(".banner-frame.is-active");
-    if (active) {
-      active.scrollIntoView({ behavior: "auto", inline: "center", block: "nearest" });
-    }
+    if (active) scrollBannerTo(active, "auto");
   }
 
   function setDetails(open) {
