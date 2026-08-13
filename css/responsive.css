@@ -54,16 +54,21 @@
   }
 
   .gallery__track {
-    grid-template-columns: repeat(5, minmax(140px, 1fr));
+    display: flex;
+    grid-template-columns: none;
     overflow-x: auto;
+    max-width: 100%;
     padding-bottom: 0.5rem;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
   }
 
   .gallery__item {
     scroll-snap-align: start;
-    min-width: 140px;
+    flex: 0 0 min(58vw, 220px);
+    min-width: 0;
+    width: min(58vw, 220px);
   }
 
   .gallery__item--offset {
@@ -164,63 +169,19 @@
   :root {
     --header-h: 4rem;
     --section-y: clamp(3.5rem, 8vh, 5.5rem);
-  }
-
-  .nav {
-    grid-template-columns: auto auto;
-  }
-
-  .nav__links {
-    position: fixed;
-    inset: 0;
-    background: rgba(8, 8, 8, 0.97);
-    flex-direction: column;
-    justify-content: center;
-    gap: 1.75rem;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 0.35s ease, visibility 0.35s ease;
-    z-index: 1;
-  }
-
-  .nav__links.is-open {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-  }
-
-  .nav__links a {
-    font-size: 1rem;
-    letter-spacing: 0.2em;
-  }
-
-  .nav__menu-toggle {
-    display: inline-flex;
-    z-index: 2;
-  }
-
-  .nav__dot-btn {
-    display: none;
-  }
-
-  .nav__actions {
-    gap: 0;
-  }
-
-  body.nav-open {
-    overflow: hidden;
+    --pad-x: 1.15rem;
   }
 
   .hero {
     padding-top: calc(var(--header-h) + 1.5rem);
     padding-bottom: 4rem;
     padding-left: var(--pad-x);
+    padding-right: var(--pad-x);
     min-height: auto;
   }
 
   .hero__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     grid-template-areas:
       "intro"
       "title"
@@ -231,7 +192,7 @@
   }
 
   .hero__title {
-    font-size: clamp(2.8rem, 12vw, 4rem);
+    font-size: clamp(2.35rem, 11vw, 3.4rem);
     margin-bottom: 0;
   }
 
@@ -242,6 +203,7 @@
   .hero-visual {
     max-height: none;
     aspect-ratio: 4 / 5;
+    width: 100%;
   }
 
   .hero__role {
@@ -255,19 +217,32 @@
   }
 
   .work-secondary {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .project-title {
+    font-size: clamp(1.6rem, 8vw, 2.4rem);
+  }
+
+  .about-statement {
+    font-size: clamp(2.1rem, 11vw, 3.25rem);
   }
 
   .timeline {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .gallery__track {
-    grid-template-columns: repeat(5, minmax(160px, 70vw));
+    display: flex;
+  }
+
+  .gallery__item {
+    flex: 0 0 min(70vw, 240px);
+    width: min(70vw, 240px);
   }
 
   .contact__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     grid-template-areas:
       "badge"
       "title"
@@ -276,7 +251,13 @@
   }
 
   .contact__title {
-    font-size: clamp(2.2rem, 10vw, 3rem);
+    font-size: clamp(2rem, 10vw, 3rem);
+    overflow-wrap: anywhere;
+  }
+
+  .orbit-badge {
+    width: 120px;
+    height: 120px;
   }
 
   .lightbox__nav {

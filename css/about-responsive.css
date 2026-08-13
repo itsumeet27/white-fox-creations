@@ -55,19 +55,6 @@
 @media (max-width: 767px) {
   :root { --header-h: 4rem; }
 
-  .nav { grid-template-columns: auto auto; }
-  .nav__links {
-    position: fixed; inset: 0; background: rgba(7,7,7,.97);
-    flex-direction: column; justify-content: center; gap: 1.75rem;
-    opacity: 0; visibility: hidden; pointer-events: none;
-    transition: opacity .35s ease, visibility .35s ease; z-index: 1;
-  }
-  .nav__links.is-open { opacity: 1; visibility: visible; pointer-events: auto; }
-  .nav__links a { font-size: 1rem; }
-  .nav__menu-toggle { display: inline-flex; z-index: 2; }
-  .nav__dot-btn { display: none; }
-  body.nav-open { overflow: hidden; }
-
   .about-hero { min-height: auto; max-height: none; padding-top: calc(var(--header-h) + 1.25rem); }
   .about-hero__title { font-size: clamp(2.1rem, 9vw, 2.85rem); }
   .about-hero__visual { max-height: none; aspect-ratio: 4/5; }
