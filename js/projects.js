@@ -27,7 +27,7 @@
     showMore: document.getElementById("show-more"),
     showMoreLabel: document.querySelector("[data-show-more-label]"),
     details: document.getElementById("project-details"),
-    reel: document.getElementById("film-reel"),
+    filters: document.getElementById("category-filters"),
     banner: document.getElementById("film-banner"),
     bannerName: document.querySelector("[data-banner-name]"),
     bannerCount: document.querySelector("[data-banner-count]")
@@ -99,42 +99,29 @@
     }, 280);
   }
 
-  function renderReel() {
-    if (!els.reel) return;
-    els.reel.innerHTML = categories
+  function renderFilters() {
+    if (!els.filters) return;
+    els.filters.innerHTML = categories
       .map((cat, i) => {
-        const active = i === state.categoryIndex ? " is-active" : "";
+        const active = i === state.categoryIndex;
         return `
-          <button class="film-card${active}" type="button" role="listitem" data-cat="${i}" data-cursor="view" aria-pressed="${i === state.categoryIndex}">
-            <img src="${cat.cover}" alt="" width="600" height="840" loading="lazy" decoding="async">
-            <span class="film-card__caption">
-              <h3>${cat.name}</h3>
-              <p>${pad(cat.projects.length)} Projects</p>
-            </span>
+          <button type="button" class="${active ? "is-active" : ""}" role="tab" data-cat="${i}" data-cursor="button" aria-selected="${active}">
+            ${cat.name} <span class="category-filters__count">(${cat.projects.length})</span>
           </button>
         `;
       })
       .join("");
 
-    els.reel.querySelectorAll(".film-card").forEach((card) => {
-      card.addEventListener("click", () => {
-        const next = Number(card.dataset.cat);
-        if (next === state.categoryIndex) {
-          card.scrollIntoView({ behavior: reduce ? "auto" : "smooth", inline: "center", block: "nearest" });
-          return;
-        }
+    els.filters.querySelectorAll("button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const next = Number(btn.dataset.cat);
+        if (next === state.categoryIndex) return;
         state.categoryIndex = next;
         state.projectIndex = 0;
-        const reelX = els.reel.scrollLeft;
-        renderReel();
-        els.reel.scrollLeft = reelX;
+        renderFilters();
         renderBanner();
         renderHero(currentProject());
         syncHash();
-        const active = els.reel.querySelector(".film-card.is-active");
-        if (active) {
-          active.scrollIntoView({ behavior: reduce ? "auto" : "smooth", inline: "center", block: "nearest" });
-        }
       });
     });
   }
@@ -201,17 +188,17 @@
     const prev = document.querySelector("[data-reel-prev]");
     const next = document.querySelector("[data-reel-next]");
     const step = () => {
-      const card = els.reel.querySelector(".film-card");
-      return card ? card.getBoundingClientRect().width + 18 : 240;
+      const card = els.banner && els.banner.querySelector(".banner-frame");
+      return card ? card.getBoundingClientRect().width + 12 : 280;
     };
     if (prev) {
       prev.addEventListener("click", () => {
-        els.reel.scrollBy({ left: -step(), behavior: reduce ? "auto" : "smooth" });
+        if (els.banner) els.banner.scrollBy({ left: -step(), behavior: reduce ? "auto" : "smooth" });
       });
     }
     if (next) {
       next.addEventListener("click", () => {
-        els.reel.scrollBy({ left: step(), behavior: reduce ? "auto" : "smooth" });
+        if (els.banner) els.banner.scrollBy({ left: step(), behavior: reduce ? "auto" : "smooth" });
       });
     }
   }
@@ -335,7 +322,7 @@
   document.addEventListener("DOMContentLoaded", () => {
     try {
       applyHash();
-      renderReel();
+      renderFilters();
       renderBanner();
       renderHero(currentProject(), { animate: false });
       initShowMore();

@@ -64,15 +64,11 @@
         </p>
       </div>
 
-      <!-- Cateogries -->
       <section class="category-section" aria-labelledby="category-heading">
         <header class="category-section__header">
           <h2 id="category-heading">Explore by Category</h2>
         </header>
-
-        <div class="film-reel-wrap">
-          <div class="film-reel" id="film-reel" role="list"></div>
-        </div>
+        <div class="category-filters" id="category-filters" role="tablist" aria-label="Project categories"></div>
       </section>
 
       <div class="project-hero__stage">
@@ -149,14 +145,19 @@
     <!-- Category reels -->
     <section class="banner-section" aria-labelledby="banner-heading">
       <header class="banner-section__header">
-        <p class="banner-kicker"><span class="dot" aria-hidden="true"></span> Category reel</p>
-        <h2 id="banner-heading"><span data-banner-name>Posts</span></h2>
-        <p class="banner-count"><span data-banner-count>12</span> Projects</p>
+        <h2 id="banner-heading" class="banner-kicker">
+          <span class="dot" aria-hidden="true"></span>
+          Category reel
+          <span class="banner-heading-cat">
+            — <span data-banner-name>Posts</span>
+            (<span data-banner-count>12</span>)
+          </span>
+        </h2>
         <div class="reel-controls">
-          <button class="reel-btn" type="button" data-reel-prev data-cursor="button" aria-label="Previous categories">
+          <button class="reel-btn" type="button" data-reel-prev data-cursor="button" aria-label="Previous projects">
             <span aria-hidden="true">←</span>
           </button>
-          <button class="reel-btn" type="button" data-reel-next data-cursor="button" aria-label="Next categories">
+          <button class="reel-btn" type="button" data-reel-next data-cursor="button" aria-label="Next projects">
             <span aria-hidden="true">→</span>
           </button>
         </div>
