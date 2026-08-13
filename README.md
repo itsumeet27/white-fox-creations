@@ -8,6 +8,7 @@ Premium portfolio for White Fox Creations.
 
 - Home: https://itsumeet27.github.io/white-fox-creations/
 - Gallery: https://itsumeet27.github.io/white-fox-creations/gallery.html
+- Projects: https://itsumeet27.github.io/white-fox-creations/projects.html
 
 Every push to `main` runs `.github/workflows/deploy-pages.yml` and republishes automatically.
 
@@ -19,7 +20,7 @@ Every push to `main` runs `.github/workflows/deploy-pages.yml` and republishes a
 python3 -m http.server 8080
 ```
 
-Open `http://localhost:8080` (home) or `http://localhost:8080/gallery.html`.
+Open `http://localhost:8080` (home), `http://localhost:8080/projects.html`, or `http://localhost:8080/gallery.html`.
 
 ## Accent
 

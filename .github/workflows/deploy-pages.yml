@@ -27,7 +27,7 @@ jobs:
       - name: Prepare site bundle
         run: |
           mkdir -p _site
-          cp index.html gallery.html about.html _site/
+          cp index.html gallery.html about.html projects.html _site/
           cp -r css js assets _site/
 
       - name: Configure Pages
