@@ -188,12 +188,20 @@
     highlightActiveFrame("auto");
   }
 
+  function scrollPageToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: reduce ? "auto" : "smooth"
+    });
+  }
+
   function initBannerClicks() {
     if (!els.banner) return;
     els.banner.addEventListener("click", (e) => {
       const frame = e.target.closest(".banner-frame");
       if (!frame) return;
       goToProject(Number(frame.dataset.index));
+      scrollPageToTop();
     });
   }
 
