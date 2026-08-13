@@ -24,7 +24,14 @@
       else a.removeAttribute("aria-current");
     });
 
-    const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 8);
+    const linksHome = links ? links.parentNode : null;
+    const linksSlot = document.createComment("nav-links");
+    if (links && linksHome) linksHome.insertBefore(linksSlot, links);
+
+    const onScroll = () => {
+      if (header.classList.contains("is-open")) return;
+      header.classList.toggle("is-scrolled", window.scrollY > 8);
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
 
@@ -36,6 +43,11 @@
       document.body.classList.toggle("nav-open", open);
       toggle.setAttribute("aria-expanded", String(open));
       toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      if (open) {
+        document.body.appendChild(links);
+      } else if (linksSlot.parentNode) {
+        linksSlot.parentNode.insertBefore(links, linksSlot.nextSibling);
+      }
     }
 
     if (toggle) {
