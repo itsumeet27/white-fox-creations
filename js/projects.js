@@ -125,7 +125,9 @@
         }
         state.categoryIndex = next;
         state.projectIndex = 0;
+        const reelX = els.reel.scrollLeft;
         renderReel();
+        els.reel.scrollLeft = reelX;
         renderBanner();
         renderHero(currentProject());
         syncHash();
