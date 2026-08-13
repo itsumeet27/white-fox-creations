@@ -235,16 +235,18 @@
       els.menuToggle.addEventListener("click", () => {
         const open = !els.navLinks.classList.contains("is-open");
         els.navLinks.classList.toggle("is-open", open);
+        els.menuToggle.classList.toggle("is-open", open);
         document.body.classList.toggle("nav-open", open);
         els.menuToggle.setAttribute("aria-expanded", String(open));
-        els.menuToggle.querySelector("span").textContent = open ? "Close" : "Menu";
+        els.menuToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
       });
       els.navLinks.querySelectorAll("a").forEach((a) => {
         a.addEventListener("click", () => {
           els.navLinks.classList.remove("is-open");
+          els.menuToggle.classList.remove("is-open");
           document.body.classList.remove("nav-open");
           els.menuToggle.setAttribute("aria-expanded", "false");
-          els.menuToggle.querySelector("span").textContent = "Menu";
+          els.menuToggle.setAttribute("aria-label", "Open menu");
         });
       });
     }

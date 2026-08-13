@@ -31,16 +31,18 @@
       toggle.addEventListener("click", () => {
         const open = !links.classList.contains("is-open");
         links.classList.toggle("is-open", open);
+        toggle.classList.toggle("is-open", open);
         document.body.classList.toggle("nav-open", open);
         toggle.setAttribute("aria-expanded", String(open));
-        toggle.querySelector("span").textContent = open ? "Close" : "Menu";
+        toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
       });
       links.querySelectorAll("a").forEach((a) =>
         a.addEventListener("click", () => {
           links.classList.remove("is-open");
+          toggle.classList.remove("is-open");
           document.body.classList.remove("nav-open");
           toggle.setAttribute("aria-expanded", "false");
-          toggle.querySelector("span").textContent = "Menu";
+          toggle.setAttribute("aria-label", "Open menu");
         })
       );
     }

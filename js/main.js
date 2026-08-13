@@ -23,10 +23,10 @@
   function setMenu(open) {
     if (!navLinks || !menuToggle) return;
     navLinks.classList.toggle("is-open", open);
+    menuToggle.classList.toggle("is-open", open);
     document.body.classList.toggle("nav-open", open);
     menuToggle.setAttribute("aria-expanded", String(open));
     menuToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-    menuToggle.querySelector("span").textContent = open ? "Close" : "Menu";
   }
 
   if (menuToggle) {
