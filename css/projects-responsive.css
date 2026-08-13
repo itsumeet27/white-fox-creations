@@ -1,7 +1,10 @@
 /* Projects page responsive */
 
 @media (max-width: 1199px) {
-  .project-hero { padding-left: var(--pad-x); }
+  .project-hero {
+    padding-left: var(--pad-x);
+  }
+
   .project-hero__side { display: none; }
 
   .project-details__inner {
@@ -55,17 +58,26 @@
   body.nav-open { overflow: hidden; }
 
   .project-hero {
-    padding-top: calc(var(--header-h) + 1rem);
+    padding-top: calc(var(--header-h) + 0.75rem);
+    max-height: none;
   }
 
   .project-frame {
-    max-height: none;
-    aspect-ratio: 16 / 11;
+    min-height: 220px;
   }
 
-  .project-hero__title-row,
-  .project-hero__desc-row {
-    flex-direction: column;
+  .category-section__row {
+    flex-wrap: wrap;
+  }
+
+  .category-filters {
+    order: 3;
+    flex-basis: 100%;
+    justify-content: flex-start;
+  }
+
+  .project-hero__title-row {
+    flex-wrap: wrap;
     align-items: flex-start;
   }
 
@@ -76,11 +88,14 @@
 
   .show-more { width: 100%; justify-content: center; }
 
-  .banner-frame { flex-basis: min(240px, 82vw); }
+  .banner-frame {
+    flex-basis: 132px;
+    height: 82px;
+  }
 }
 
 @media (max-width: 480px) {
   .project-hero__title {
-    font-size: 2.1rem;
+    font-size: 1.55rem;
   }
 }
