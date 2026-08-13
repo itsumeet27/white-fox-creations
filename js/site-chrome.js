@@ -24,18 +24,18 @@
       else a.removeAttribute("aria-current");
     });
 
-    const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 24);
+    const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 8);
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
 
     function setMenu(open) {
       if (!links || !toggle) return;
       links.classList.toggle("is-open", open);
+      toggle.classList.toggle("is-open", open);
+      header.classList.toggle("is-open", open);
       document.body.classList.toggle("nav-open", open);
       toggle.setAttribute("aria-expanded", String(open));
       toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-      const label = toggle.querySelector("span");
-      if (label) label.textContent = open ? "Close" : "Menu";
     }
 
     if (toggle) {
@@ -44,6 +44,9 @@
     if (links) {
       links.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
     }
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && links && links.classList.contains("is-open")) setMenu(false);
+    });
 
     const dotBtn = header.querySelector(".nav__dot-btn");
     if (dotBtn) {
