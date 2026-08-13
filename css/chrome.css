@@ -150,8 +150,9 @@ body {
   place-items: center;
   color: var(--text, #f4f4f0);
   position: relative;
-  z-index: 110;
-  border-radius: 0.35rem;
+  z-index: 1002;
+  border-radius: 50%;
+  background: transparent;
 }
 
 .nav__menu-icon {
@@ -209,10 +210,17 @@ body {
     gap: 0;
   }
 
+  .nav__logo,
+  .nav__actions,
+  .nav__menu-toggle {
+    position: relative;
+    z-index: 1002;
+  }
+
   .nav__links {
     position: fixed;
     inset: 0;
-    z-index: 100;
+    z-index: 1001;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -253,6 +261,19 @@ body {
 
   body.nav-open {
     overflow: hidden;
+  }
+
+  body.nav-open::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: #080808;
+  }
+
+  .site-header.is-open {
+    background: #080808;
+    border-bottom-color: var(--border, rgba(255, 255, 255, 0.12));
   }
 }
 
