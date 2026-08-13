@@ -470,7 +470,7 @@ body.has-custom-cursor .cursor { display: block; }
 
 .project-details__inner {
   overflow: hidden;
-  width: min(100% - (var(--pad-x) * 2), var(--max));
+  width: min(100%, var(--max));
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

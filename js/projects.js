@@ -126,6 +126,16 @@
     });
   }
 
+  function goToProject(index) {
+    const cat = currentCategory();
+    if (!cat || !cat.projects.length) return;
+    const len = cat.projects.length;
+    state.projectIndex = ((index % len) + len) % len;
+    renderHero(currentProject());
+    renderBanner();
+    syncHash();
+  }
+
   function scrollBannerTo(frame, behavior) {
     if (!els.banner || !frame) return;
     const left = frame.offsetLeft - (els.banner.clientWidth - frame.offsetWidth) / 2;
@@ -160,15 +170,7 @@
       frame.addEventListener("click", () => {
         const next = Number(frame.dataset.index);
         if (next === state.projectIndex) return;
-        state.projectIndex = next;
-        renderHero(currentProject());
-        els.banner.querySelectorAll(".banner-frame").forEach((el) => {
-          const on = Number(el.dataset.index) === next;
-          el.classList.toggle("is-active", on);
-          el.setAttribute("aria-pressed", String(on));
-        });
-        scrollBannerTo(frame);
-        syncHash();
+        goToProject(next);
       });
     });
 
@@ -193,19 +195,11 @@
   function initReelNav() {
     const prev = document.querySelector("[data-reel-prev]");
     const next = document.querySelector("[data-reel-next]");
-    const step = () => {
-      const card = els.banner && els.banner.querySelector(".banner-frame");
-      return card ? card.getBoundingClientRect().width + 12 : 280;
-    };
     if (prev) {
-      prev.addEventListener("click", () => {
-        if (els.banner) els.banner.scrollBy({ left: -step(), behavior: reduce ? "auto" : "smooth" });
-      });
+      prev.addEventListener("click", () => goToProject(state.projectIndex - 1));
     }
     if (next) {
-      next.addEventListener("click", () => {
-        if (els.banner) els.banner.scrollBy({ left: step(), behavior: reduce ? "auto" : "smooth" });
-      });
+      next.addEventListener("click", () => goToProject(state.projectIndex + 1));
     }
   }
 
@@ -275,20 +269,8 @@
   function initKeyboard() {
     document.addEventListener("keydown", (e) => {
       if (e.target && ["INPUT", "TEXTAREA", "SELECT"].includes(e.target.tagName)) return;
-      const cat = currentCategory();
-      if (!cat) return;
-      if (e.key === "ArrowRight") {
-        state.projectIndex = (state.projectIndex + 1) % cat.projects.length;
-        renderBanner();
-        renderHero(currentProject());
-        syncHash();
-      }
-      if (e.key === "ArrowLeft") {
-        state.projectIndex = (state.projectIndex - 1 + cat.projects.length) % cat.projects.length;
-        renderBanner();
-        renderHero(currentProject());
-        syncHash();
-      }
+      if (e.key === "ArrowRight") goToProject(state.projectIndex + 1);
+      if (e.key === "ArrowLeft") goToProject(state.projectIndex - 1);
     });
   }
 
