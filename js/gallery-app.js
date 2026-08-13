@@ -41,36 +41,6 @@
     if (window.GalleryAnimations) window.GalleryAnimations.refreshCards();
   }
 
-  function initNav() {
-    const header = document.querySelector(".site-header");
-    const links = document.getElementById("nav-links");
-    const toggle = document.querySelector(".nav__menu-toggle");
-
-    function onScroll() {
-      if (header) header.classList.toggle("is-scrolled", window.scrollY > 24);
-    }
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-
-    if (toggle && links) {
-      toggle.addEventListener("click", () => {
-        const open = !links.classList.contains("is-open");
-        links.classList.toggle("is-open", open);
-        toggle.classList.toggle("is-open", open);
-        document.body.classList.toggle("nav-open", open);
-        toggle.setAttribute("aria-expanded", String(open));
-        toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-      });
-      links.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => {
-        links.classList.remove("is-open");
-        toggle.classList.remove("is-open");
-        document.body.classList.remove("nav-open");
-        toggle.setAttribute("aria-expanded", "false");
-        toggle.setAttribute("aria-label", "Open menu");
-      }));
-    }
-  }
-
   function initReel() {
     const modal = document.getElementById("reel-modal");
     const openBtn = document.querySelector("[data-open-reel]");
@@ -100,16 +70,6 @@
     });
   }
 
-  function initTop() {
-    document.querySelectorAll('a[href="#top"]').forEach((a) => {
-      a.addEventListener("click", (e) => {
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-    });
-  }
-
   document.addEventListener("DOMContentLoaded", () => {
     const total = (window.GALLERY_ARTWORKS || []).length;
     if (counterHero) counterHero.textContent = String(total).padStart(2, "0");
@@ -121,9 +81,7 @@
       renderGrid(window.GALLERY_ARTWORKS || []);
     }
 
-    initNav();
     initReel();
-    initTop();
     if (window.GalleryAnimations) window.GalleryAnimations.start();
   });
 })();

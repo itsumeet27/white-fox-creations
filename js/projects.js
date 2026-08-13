@@ -8,8 +8,6 @@
   const els = {
     header: document.querySelector(".site-header"),
     loader: document.querySelector(".page-loader"),
-    navLinks: document.getElementById("nav-links"),
-    menuToggle: document.querySelector(".nav__menu-toggle"),
     image: document.getElementById("project-hero-image"),
     frame: document.querySelector(".project-frame"),
     title: document.getElementById("project-title"),
@@ -190,12 +188,20 @@
     highlightActiveFrame("auto");
   }
 
+  function scrollPageToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: reduce ? "auto" : "smooth"
+    });
+  }
+
   function initBannerClicks() {
     if (!els.banner) return;
     els.banner.addEventListener("click", (e) => {
       const frame = e.target.closest(".banner-frame");
       if (!frame) return;
       goToProject(Number(frame.dataset.index));
+      scrollPageToTop();
     });
   }
 
@@ -222,47 +228,6 @@
     if (next) {
       next.addEventListener("click", () => goToProject(state.projectIndex + 1));
     }
-  }
-
-  function initNav() {
-    function onScroll() {
-      if (els.header) els.header.classList.toggle("is-scrolled", window.scrollY > 24);
-    }
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-
-    if (els.menuToggle && els.navLinks) {
-      els.menuToggle.addEventListener("click", () => {
-        const open = !els.navLinks.classList.contains("is-open");
-        els.navLinks.classList.toggle("is-open", open);
-        els.menuToggle.classList.toggle("is-open", open);
-        document.body.classList.toggle("nav-open", open);
-        els.menuToggle.setAttribute("aria-expanded", String(open));
-        els.menuToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-      });
-      els.navLinks.querySelectorAll("a").forEach((a) => {
-        a.addEventListener("click", () => {
-          els.navLinks.classList.remove("is-open");
-          els.menuToggle.classList.remove("is-open");
-          document.body.classList.remove("nav-open");
-          els.menuToggle.setAttribute("aria-expanded", "false");
-          els.menuToggle.setAttribute("aria-label", "Open menu");
-        });
-      });
-    }
-
-    const dotBtn = document.querySelector(".nav__dot-btn");
-    if (dotBtn) {
-      dotBtn.addEventListener("click", () => dotBtn.classList.toggle("is-active"));
-    }
-
-    document.querySelectorAll('a[href="#top"]').forEach((a) => {
-      a.addEventListener("click", (e) => {
-        if (reduce) return;
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-    });
   }
 
   function initCursor() {
@@ -339,7 +304,6 @@
       initShowMore();
       initReelNav();
       initBannerClicks();
-      initNav();
       initCursor();
       initKeyboard();
       syncHash();

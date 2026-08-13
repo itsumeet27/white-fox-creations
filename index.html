@@ -12,39 +12,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
-  <link rel="stylesheet" href="css/nav-mobile.css">
+  <link rel="stylesheet" href="css/chrome.css">
 </head>
-<body>
+<body data-page="home">
   <div class="cursor" aria-hidden="true">
     <span class="cursor__dot"></span>
     <span class="cursor__ring"></span>
     <span class="cursor__label">VIEW</span>
   </div>
 
-  <!-- NAVIGATION -->
-  <header class="site-header" id="top">
-    <nav class="nav" aria-label="Primary">
-      <a href="#top" class="nav__logo" aria-label="Nirbhay Verma home">NV</a>
-
-      <ul class="nav__links" id="nav-links">
-        <li><a href="#work" data-section="work">Work</a></li>
-        <li><a href="#about" data-section="about">About</a></li>
-        <li><a href="projects.html" data-section="projects">Projects</a></li>
-        <li><a href="gallery.html" data-section="gallery">Gallery</a></li>
-        <li><a href="#experience" data-section="experience">Experience</a></li>
-        <li><a href="#contact" data-section="contact">Contact</a></li>
-      </ul>
-
-      <div class="nav__actions">
-        <button class="nav__dot-btn" type="button" aria-label="Toggle interaction mode" title="Interaction">
-          <span class="nav__dot-btn-inner"></span>
-        </button>
-        <button class="nav__menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
-          <span class="nav__menu-icon" aria-hidden="true"><i></i><i></i><i></i></span>
-        </button>
-      </div>
-    </nav>
-  </header>
+  <header class="site-header" id="top" data-site-header></header>
 
   <main>
     <!-- HERO -->
@@ -112,7 +89,7 @@
         </header>
 
         <div class="work-layout reveal">
-          <a href="projects.html#echoes" class="project-image project-image--featured" data-project-link data-cursor="project">
+          <a href="projects/#echoes" class="project-image project-image--featured" data-project-link data-cursor="project">
             <img
               src="assets/images/project-echoes.jpg"
               alt="Echoes — cinematic brand film still with neon-lit mountain ridges"
@@ -131,14 +108,14 @@
             <p class="project-desc">
               A cinematic brand film exploring the connection between sound, motion and emotion.
             </p>
-            <a href="projects.html#echoes" class="text-link" data-cursor="button">
+            <a href="projects/#echoes" class="text-link" data-cursor="button">
               View Project <span class="arrow" aria-hidden="true">↗</span>
             </a>
           </div>
 
           <div class="work-secondary">
             <article class="work-card" data-cursor="project">
-              <a href="projects.html#fluidity-film" class="project-image project-image--secondary">
+              <a href="projects/#fluidity-film" class="project-image project-image--secondary">
                 <img
                   src="assets/images/project-fluidity.jpg"
                   alt="Fluidity — abstract nebula motion design"
@@ -157,7 +134,7 @@
             </article>
 
             <article class="work-card" data-cursor="project">
-              <a href="projects.html#kinetic-type" class="project-image project-image--secondary">
+              <a href="projects/#kinetic-type" class="project-image project-image--secondary">
                 <img
                   src="assets/images/project-kinetic.jpg"
                   alt="Kinetic Type — high-contrast title design typography"
@@ -177,7 +154,7 @@
           </div>
 
           <div class="work-footer">
-            <a href="projects.html" class="btn-outline" data-cursor="button">
+            <a href="projects/" class="btn-outline" data-cursor="button">
               All Projects <span class="arrow" aria-hidden="true">→</span>
             </a>
           </div>
@@ -318,7 +295,7 @@
             <li class="about-journey__line" aria-hidden="true"></li>
           </ol>
 
-          <a href="about.html" class="btn-about" data-cursor="button">
+          <a href="about/" class="btn-about" data-cursor="button">
             Explore the Journey <span class="arrow" aria-hidden="true">→</span>
           </a>
         </div>
@@ -401,63 +378,14 @@
             <span class="gallery__caption">Orbit</span>
           </button>
         </div>
-        <a href="gallery.html" class="text-link gallery__explore" data-cursor="button">
+        <a href="gallery/" class="text-link gallery__explore" data-cursor="button">
           Explore Gallery <span class="arrow" aria-hidden="true">↗</span>
         </a>
       </div>
     </section>
-
-    <!-- CONTACT CTA -->
-    <section class="contact section" id="contact" aria-labelledby="contact-heading">
-      <div class="container contact__grid reveal">
-        <div class="contact__badge" aria-hidden="true">
-          <div class="orbit-badge">
-            <svg class="orbit-badge__text" viewBox="0 0 200 200" width="160" height="160">
-              <defs>
-                <path id="circlePath" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0"/>
-              </defs>
-              <text>
-                <textPath href="#circlePath" startOffset="0%">LET'S CREATE · LET'S CREATE · </textPath>
-              </text>
-            </svg>
-            <span class="orbit-badge__star">
-              <svg viewBox="0 0 64 64" width="36" height="36" aria-hidden="true">
-                <path d="M32 4 L36 28 L60 32 L36 36 L32 60 L28 36 L4 32 L28 28 Z" fill="currentColor"/>
-              </svg>
-            </span>
-          </div>
-        </div>
-
-        <div class="contact__main">
-          <h2 id="contact-heading" class="contact__title">
-            Let's Create<br>
-            Something<br>
-            <span class="accent">Extraordinary.</span>
-          </h2>
-        </div>
-
-        <div class="contact__aside">
-          <a class="contact__email" href="mailto:hello@nirbhayverma.com" data-cursor="button">hello@nirbhayverma.com</a>
-          <ul class="social-links">
-            <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-            <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-          </ul>
-          <a href="mailto:hello@nirbhayverma.com" class="btn-outline btn-outline--lg" data-cursor="button">
-            Start a Project <span class="arrow" aria-hidden="true">↗</span>
-          </a>
-        </div>
-      </div>
-    </section>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="container site-footer__grid">
-      <p class="site-footer__copy">© 2026 Nirbhay Verma. All Rights Reserved.</p>
-      <p class="site-footer__tagline">Designed with intention. Created with passion.</p>
-      <a href="#top" class="site-footer__top" data-cursor="button">Back to Top <span aria-hidden="true">↑</span></a>
-    </div>
-  </footer>
+  <div data-site-footer></div>
 
   <!-- SHOWREEL MODAL -->
   <div class="modal" id="showreel-modal" role="dialog" aria-modal="true" aria-labelledby="showreel-title" hidden>
@@ -497,6 +425,7 @@
     <button class="lightbox__nav lightbox__nav--next" type="button" data-lightbox-next aria-label="Next image">→</button>
   </div>
 
+  <script src="js/site-chrome.js"></script>
   <script src="js/cursor.js" defer></script>
   <script src="js/gallery.js" defer></script>
   <script src="js/animations.js" defer></script>

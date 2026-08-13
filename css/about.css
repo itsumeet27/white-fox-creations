@@ -23,14 +23,15 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: clip; max-width: 100%; }
 body {
   font-family: var(--font);
   background: var(--bg);
   color: var(--text);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
+  max-width: 100%;
 }
 body.has-custom-cursor,
 body.has-custom-cursor a,
@@ -102,8 +103,8 @@ body.has-custom-cursor .cursor { display: block; }
 .site-header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: var(--header-h);
   border-bottom: 1px solid transparent;
-  opacity: 0; transform: translateY(-10px);
-  transition: opacity .7s var(--ease-out), transform .7s var(--ease-out), background .35s ease, backdrop-filter .35s ease, border-color .35s ease;
+  opacity: 1; transform: none;
+  transition: opacity .7s var(--ease-out), background .35s ease, backdrop-filter .35s ease, border-color .35s ease;
 }
 .site-header.is-ready { opacity: 1; transform: none; }
 .site-header.is-scrolled {
