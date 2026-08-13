@@ -136,6 +136,19 @@ body.has-custom-cursor .cursor { display: block; }
   pointer-events: none;
 }
 
+/* If scripts fail, do not leave visitors on a black loader forever */
+.page-loader {
+  animation: loaderFailsafe 0.4s ease 3.5s forwards;
+}
+
+@keyframes loaderFailsafe {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
 .page-loader__inner {
   display: flex;
   flex-direction: column;

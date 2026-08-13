@@ -298,6 +298,8 @@
       }
     });
   }
+
+  function initIntro() {
     const delay = reduce ? 0 : 850;
     window.setTimeout(() => {
       if (els.loader) els.loader.classList.add("is-done");
@@ -331,16 +333,19 @@
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    applyHash();
-    renderReel();
-    renderBanner();
-    renderHero(currentProject(), { animate: false });
-    initShowMore();
-    initReelNav();
-    initNav();
-    initCursor();
-    initIntro();
-    initKeyboard();
-    syncHash();
+    try {
+      applyHash();
+      renderReel();
+      renderBanner();
+      renderHero(currentProject(), { animate: false });
+      initShowMore();
+      initReelNav();
+      initNav();
+      initCursor();
+      initKeyboard();
+      syncHash();
+    } finally {
+      initIntro();
+    }
   });
 })();
