@@ -36,7 +36,8 @@
   const state = {
     categoryIndex: 0,
     projectIndex: 0,
-    detailsOpen: false
+    detailsOpen: false,
+    bannerCategory: -1
   };
 
   function pad(n) {
@@ -130,9 +131,11 @@
     const cat = currentCategory();
     if (!cat || !cat.projects.length) return;
     const len = cat.projects.length;
-    state.projectIndex = ((index % len) + len) % len;
+    const next = ((index % len) + len) % len;
+    if (next === state.projectIndex) return;
+    state.projectIndex = next;
     renderHero(currentProject());
-    renderBanner();
+    highlightActiveFrame();
     syncHash();
   }
 
@@ -145,18 +148,36 @@
     });
   }
 
+  function highlightActiveFrame(behavior) {
+    if (!els.banner) return;
+    let active = null;
+    els.banner.querySelectorAll(".banner-frame").forEach((el) => {
+      const on = Number(el.dataset.index) === state.projectIndex;
+      el.classList.toggle("is-active", on);
+      el.setAttribute("aria-pressed", String(on));
+      if (on) active = el;
+    });
+    if (active) scrollBannerTo(active, behavior);
+  }
+
   function renderBanner() {
     const cat = currentCategory();
     if (!cat || !els.banner) return;
     els.bannerName.textContent = cat.name;
     els.bannerCount.textContent = String(cat.projects.length);
 
+    if (state.bannerCategory === state.categoryIndex && els.banner.children.length) {
+      highlightActiveFrame("auto");
+      return;
+    }
+
+    state.bannerCategory = state.categoryIndex;
     els.banner.innerHTML = cat.projects
       .map((project, i) => {
         const active = i === state.projectIndex ? " is-active" : "";
         return `
-          <button class="banner-frame${active}" type="button" role="listitem" data-index="${i}" data-cursor="view" style="animation-delay: ${i * 0.045}s" aria-pressed="${i === state.projectIndex}">
-            <img src="${project.image}" alt="${project.title}" width="720" height="450" loading="lazy" decoding="async">
+          <button class="banner-frame${active}" type="button" role="listitem" data-index="${i}" data-cursor="view" aria-pressed="${i === state.projectIndex}">
+            <img src="${project.image}" alt="${project.title}" width="720" height="450" loading="eager" decoding="async">
             <span class="banner-frame__meta">
               <span class="banner-frame__index">${pad(i + 1)}</span>
               <span class="banner-frame__title">${project.title}</span>
@@ -166,16 +187,16 @@
       })
       .join("");
 
-    els.banner.querySelectorAll(".banner-frame").forEach((frame) => {
-      frame.addEventListener("click", () => {
-        const next = Number(frame.dataset.index);
-        if (next === state.projectIndex) return;
-        goToProject(next);
-      });
-    });
+    highlightActiveFrame("auto");
+  }
 
-    const active = els.banner.querySelector(".banner-frame.is-active");
-    if (active) scrollBannerTo(active, "auto");
+  function initBannerClicks() {
+    if (!els.banner) return;
+    els.banner.addEventListener("click", (e) => {
+      const frame = e.target.closest(".banner-frame");
+      if (!frame) return;
+      goToProject(Number(frame.dataset.index));
+    });
   }
 
   function setDetails(open) {
@@ -315,6 +336,7 @@
       renderHero(currentProject(), { animate: false });
       initShowMore();
       initReelNav();
+      initBannerClicks();
       initNav();
       initCursor();
       initKeyboard();
